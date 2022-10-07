@@ -52,7 +52,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="500t"/>
                                 <connections>
-                                    <action selector="chipsBtns:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RU7-V9-XzN"/>
+                                    <action selector="chips:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ueo-Fu-cr5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1000" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llQ-m1-RX4">
@@ -61,7 +61,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="1000t"/>
                                 <connections>
-                                    <action selector="chipsBtns:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4we-Hv-haL"/>
+                                    <action selector="chips:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vh2-zC-eCf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10g-H5-yNH">
@@ -70,7 +70,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="100t"/>
                                 <connections>
-                                    <action selector="chipsBtns:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4n2-PM-YBW"/>
+                                    <action selector="chips:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yQ0-ue-PiJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDd-O3-1Lf">
@@ -106,7 +106,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="All In"/>
                                 <connections>
-                                    <action selector="allInBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wy5-nO-7hj"/>
+                                    <action selector="allIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AxV-K2-odQ"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dice1" translatesAutoresizingMaskIntoConstraints="NO" id="czn-NY-15s">
@@ -118,6 +118,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="allInBtn" destination="7o3-Wl-Edz" id="u4Y-4Y-u4S"/>
                         <outlet property="betLable" destination="8MD-2C-Dxd" id="v7k-Xe-zZj"/>
                         <outlet property="bigSmallControl" destination="VnX-MH-mJD" id="b8u-Ep-Udf"/>
                         <outlet property="cancelBtn" destination="JSX-O8-VSY" id="8I4-eG-BoH"/>
@@ -126,6 +127,9 @@
                         <outletCollection property="diceViews" destination="xlH-2O-xkW" collectionClass="NSMutableArray" id="3Ka-Sg-ggr"/>
                         <outletCollection property="diceViews" destination="czn-NY-15s" collectionClass="NSMutableArray" id="hi7-bu-ocw"/>
                         <outletCollection property="diceViews" destination="6dk-Zq-bME" collectionClass="NSMutableArray" id="ULS-gX-4rn"/>
+                        <outletCollection property="chipsBtns" destination="10g-H5-yNH" collectionClass="NSMutableArray" id="c64-Z1-EpM"/>
+                        <outletCollection property="chipsBtns" destination="JKp-ry-rzF" collectionClass="NSMutableArray" id="g5b-S8-bDa"/>
+                        <outletCollection property="chipsBtns" destination="llQ-m1-RX4" collectionClass="NSMutableArray" id="SbE-5Y-TZ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

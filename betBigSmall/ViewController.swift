@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet var diceViews: [UIImageView]!
     @IBOutlet weak var startBetBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var allInBtn: UIButton!
+    @IBOutlet var chipsBtns: [UIButton]!
     var player: AVPlayer?
     //骰子點數
     let diceNumbers = Array(1...6)
@@ -52,14 +54,21 @@ class ViewController: UIViewController {
         player = AVPlayer(url: url)
         player?.play()
     }
-    
+    //切換按鈕能否操作的Function
+    func btnEnableChange(choose: Bool){
+        startBetBtn.isEnabled = choose
+        cancelBtn.isEnabled = choose
+        allInBtn.isEnabled = choose
+        for i in 0...2{
+            chipsBtns[i].isEnabled = choose
+        }
+    }
     //確定押注
     @IBAction func startBet(_ sender: Any) {
         //確定下注，玩家本金扣除下注金額
         playerMoney = playerMoney - bet
-        //並隱藏押注和取消按鈕
-        startBetBtn.alpha = 0
-        cancelBtn.alpha = 0
+        //押注後不可操作籌碼相關按鈕
+        btnEnableChange(choose: false)
         //顯示玩家剩餘本金
         playerMoneyLable.text = "＄：\(playerMoney)"
     }
@@ -69,7 +78,7 @@ class ViewController: UIViewController {
         betLable.text = "下注：\(bet)"
     }
     //籌碼按鈕
-    @IBAction func chipsBtns(_ sender: UIButton) {
+    @IBAction func chips(_ sender: UIButton) {
         //判斷本金不得小於下注籌碼
         if bet + sender.tag <= playerMoney{
             bet = bet + sender.tag
@@ -81,7 +90,7 @@ class ViewController: UIViewController {
         
     }
     //All In
-    @IBAction func allInBtn(_ sender: UIButton) {
+    @IBAction func allIn(_ sender: UIButton) {
         bet = playerMoney
         betLable.text = "下注：\(bet)"
     }
@@ -91,7 +100,7 @@ class ViewController: UIViewController {
         var resultTitle = ""
         var resultMessage = ""
         //先判斷是否押注完成，未完成，跳出警告
-        if startBetBtn.alpha == 1{
+        if startBetBtn.isEnabled == true{
             addAlert(title: "抱歉!", message: "您尚未押注，無法進行遊戲")
         }else{
             voice()
@@ -142,13 +151,12 @@ class ViewController: UIViewController {
                 addAlert(title: resultTitle, message: resultMessage)
             }
             
-            //每局結束，賭金歸零，更新玩家本金，顯示押注和取消按鈕，重計骰子總點數
+            //每局結束，賭金歸零，更新玩家本金，重計骰子總點數
             bet = 0
             playerMoneyLable.text = "＄：\(playerMoney)"
             betLable.text = "下注：\(bet)"
-            startBetBtn.alpha = 1
-            cancelBtn.alpha = 1
             diceTotal = 0
+            btnEnableChange(choose: true)
         }
         
     }
